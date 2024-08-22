@@ -31,7 +31,7 @@ app.post('/send-email', async (req, res) => {
     // Function to create mail options based on the recipient
     const createMailOptions = (recipient: string, isLast: boolean) => {
         return {
-            from: 'Boluwatife from Mappers Sphere <mappersphere@gmail.com>',  // Replace with your email
+            from: sender + " " + '<mappersphere@gmail.com>',  // Replace with your email
             to: recipient,
             subject: 'Your Subject Here',    // Customize the subject as needed
             html: htmlTemplate, 
