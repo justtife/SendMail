@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
 
 // Route to handle email sending
 app.post('/send-email', async (req, res) => {
-    let { htmlTemplate, recipients, sender, attachment, cc, bcc,subject } = req.body;
+    let { htmlTemplate, recipients, sender, attachment, cc, bcc,subject,admin } = req.body;
 
     if (!htmlTemplate || !recipients) {
         return res.status(400).json({ message: 'htmlTemplate and recipients are required' });
@@ -36,6 +36,7 @@ app.post('/send-email', async (req, res) => {
             subject,    // Customize the subject as needed
             html: htmlTemplate, 
             attachment,
+            replyTo: admin,
             ...(isLast && { cc: cc, bcc: bcc }) // Add CC and BCC only to the last recipient
         };
     };
