@@ -31,11 +31,10 @@ app.post('/send-email', async (req, res) => {
     // Function to create mail options based on the recipient
     const createMailOptions = (recipient: string, isLast: boolean) => {
         return {
-            from: 'mappersphere@gmail.com',  // Replace with your email
+            from: sender,  // Replace with your email
             to: recipient,
             subject: 'Your Subject Here',    // Customize the subject as needed
-            html: htmlTemplate,              // The HTML content of the email
-            name: sender,
+            html: htmlTemplate, 
             attachment,
             ...(isLast && { cc: cc, bcc: bcc }) // Add CC and BCC only to the last recipient
         };
